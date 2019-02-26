@@ -30,7 +30,7 @@
 
 
 <!-- Header -->
-<div class="header">
+<div class="header" id="header">
 
     <div class="nav-container">
         <div class="container">
@@ -50,7 +50,7 @@
                 <a href="#" class="nav__item">contacts</a>
             </nav>
 
-            <a href="#" class="btn btn_login pull-right">login</a>
+            <a href="#" class="btn btn_login pull-right" id="button1">login</a>
         </div><!-- /.container -->
     </div><!-- /.nav-container -->
 
@@ -58,8 +58,8 @@
     <div class="container intro text-center">
         <h1 class="title">Strength in equality.The power of dreams</h1>
         <p class="text">Web hosting for $9.95/mo $2.95/mo. Sign up today and also get a free<br>1-on-1 consultation to help you get started.</p>
-        <a href="#" class="btn btn_red btn_intro">get started</a>
-        <p><a href="#" class="link text-upper text-small">learn more</a></p>
+        <a href="#" class="btn btn_red btn_intro" id="button2">get started</a>
+        <p><a href="#" class="link text-upper text-small" id="button3">learn more</a></p>
     </div><!-- /.intro -->
 
 </div><!-- /.header -->
@@ -74,17 +74,17 @@
         <div class="benefits__item uptime">
             <h3 class="benefits-title">99,9% UPtime guarantee</h3>
             <p class="benefits-text">Disk space in all packages has been increased by ten times!</p>
-            <a href="#" class="link link_red text-upper text-small">read more</a>
+            <a href="#" class="link link_red text-upper text-small" id="button4">read more</a>
         </div>
         <div class="benefits__item manage">
             <h3 class="benefits-title">Managed Services</h3>
             <p class="benefits-text">Leave the set up, management and monitoring to us.</p>
-            <a href="#" class="link link_red text-upper text-small">read more</a>
+            <a href="#" class="link link_red text-upper text-small" id="button5">read more</a>
         </div>
         <div class="benefits__item cloud">
             <h3 class="benefits-title">Cloud Services</h3>
             <p class="benefits-text">Reliable, high- performance cloud that meets your changing business demands.</p>
-            <a href="#" class="link link_red text-upper text-small">read more</a>
+            <a href="#" class="link link_red text-upper text-small" id="button6">read more</a>
         </div>
 
     </div><!-- /.container -->
@@ -102,7 +102,7 @@
     <div class="domain-search">
         <form action="#" method="#" class="search-form">
             <input type="text" name="search_domain" class="search-input pull-left" placeholder="http://website.com">
-            <button class="btn btn_red btn_sm btn_search pull-right">find domain</button>
+            <button class="btn btn_red btn_sm btn_search pull-right" id="button7">find domain</button>
         </form>
     </div>
 
@@ -183,7 +183,7 @@
                 <li class="plans-include__item"><b>10</b> parked domains</li>
                 <li class="plans-include__item"><b>25 FTP</b> accounts</li>
             </ul>
-            <a href="#" class="btn btn_blue btn_full">order now</a>
+            <a href="#" class="btn btn_blue btn_full" id="button8">order now</a>
         </div>
 
         <div class="plans__item plans__item_active">
@@ -198,7 +198,7 @@
                 <li class="plans-include__item"><b>10</b> parked domains</li>
                 <li class="plans-include__item"><b>25 FTP</b> accounts</li>
             </ul>
-            <a href="#" class="btn btn_red btn_full">order now</a>
+            <a href="#" class="btn btn_red btn_full" id="button9">order now</a>
         </div>
 
         <div class="plans__item">
@@ -213,11 +213,11 @@
                 <li class="plans-include__item"><b>10</b> parked domains</li>
                 <li class="plans-include__item"><b>25 FTP</b> accounts</li>
             </ul>
-            <a href="#" class="btn btn_blue btn_full">order now</a>
+            <a href="#" class="btn btn_blue btn_full" id="button10">order now</a>
         </div>
     </div><!-- /.plans -->
 
-    <p>If you need help finding a plan that’s right for you,<br> just <a href="#" class="link link_red">chat with a live person</a>.</p>
+    <p>If you need help finding a plan that’s right for you,<br> just <a href="#" class="link link_red" id="button11">chat with a live person</a>.</p>
 </div><!-- /.container -->
 
 
@@ -298,7 +298,7 @@
     </div><!-- /.post-list -->
 
     <div class="text-center">
-        <a href="#" class="btn btn_blue">show more</a>
+        <a href="#" class="btn btn_blue" id="button12">show more</a>
     </div>
 
 </div><!-- /.container -->
@@ -346,7 +346,7 @@
             <label class="subscribe-title" for="subscribe_email">subscribe</label>
             <form action="" method="" class="subscribe-form">
                 <input type="text" name="subscribe_email" class="subscribe-input" id="subscribe_email" placeholder="Enter your e-mail here">
-                <button class="btn btn_red btn_subscribe">send</button>
+                <button class="btn btn_red btn_subscribe" id="button13">send</button>
             </form>
         </div>
 
@@ -410,6 +410,16 @@
 
 
 <!-- Javascript section -->
+
+<!--подключение jQuery через  document.write-->
+<!--<script>-->
+    <!--document.write("<script src=\"js/jquery-1.12.0.min.js\"");-->
+    <!--document.write(">");-->
+    <!--document.write("\<\/script\>");-->
+<!--</script>-->
+
+<!--подключение jQuery через  cdn-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
 
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/custom.js"></script>
