@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+//---------------------------------------------------Часть 1---------------------------------------------------
+
     //выбрать все селекторы
     var allSelector = $('*');
     // console.log(allSelector);
@@ -74,6 +76,49 @@ $(document).ready(function() {
             scrollTop: headerOffset
         }, 1000);
     });
-});
 
+    //-------------------------------------------Часть 2-----------------------------------------------
+
+    //Сформировать любую выборку из всех картинок на макете. Выбрать:
+    // - первый элемент в выборке
+    // - последний элемент в выборке
+    var images = $('img.post-photo:first-child');
+    // console.log(images);
+
+    //Выбрать все элементы с классом .container. Исключить блоки, не имеющие поля ввода
+    var container = $('.container:has(input)');
+    // console.log(container);
+
+    //фиксация меню плавность!!!!!!!!!!!!!!!!!!!!!!!
+    var headerHeight = $('#header').height(); //высота хедера
+    var navHeight = $('.nav-container').innerHeight(); //высота блока меню с границей, паддингами и тд.
+
+    $(document).on("scroll", function () {
+
+        var documentScroll = $(this).scrollTop(); //сколько проскроллили
+
+        if (documentScroll > headerHeight) {
+            $('.nav-container').addClass('fixed');
+            $('#header').css('paddingTop', navHeight); //добавляем паддинг у хедера, чтобы блок под меню не прыгал
+        } else {
+            $('.nav-container').removeClass('fixed');
+            $('#header').removeAttr('style');
+        }
+
+    });
+
+    //скролл меню
+    $('.nav a').on("click", function (e) {
+
+        e.preventDefault();
+
+        var currentBlock = $(this).attr('href'); //путь до блока
+        var currentBlockOffset = $(currentBlock).offset().top; //расстояние до нужного блока
+
+        $('html, body').animate({
+            scrollTop: currentBlockOffset - 20 //с небольшим отступом
+        }, 1000);
+    });
+
+});
 
