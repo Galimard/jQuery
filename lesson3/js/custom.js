@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     $('#button1, #button2, #button3').on('click', function (e) {
         e.preventDefault();
-        alert('Хаюшки');
+        // alert('Хаюшки');
     });
 
     $('#button4, #button5, #button6').on('click', function (e) {
@@ -83,29 +83,23 @@ $(document).ready(function() {
     // - первый элемент в выборке
     // - последний элемент в выборке
     var images = $('img.post-photo:first-child');
+    var images = $('img.post-photo:last-child');
     // console.log(images);
 
     //Выбрать все элементы с классом .container. Исключить блоки, не имеющие поля ввода
     var container = $('.container:has(input)');
     // console.log(container);
 
-    //фиксация меню плавность!!!!!!!!!!!!!!!!!!!!!!!
-    var headerHeight = $('#header').height(); //высота хедера
-    var navHeight = $('.nav-container').innerHeight(); //высота блока меню с границей, паддингами и тд.
+    //активный пункт меню
+    $('.nav__item').on('click', function(e) {
 
-    $(document).on("scroll", function () {
+        e.preventDefault();
 
-        var documentScroll = $(this).scrollTop(); //сколько проскроллили
-
-        if (documentScroll > headerHeight) {
-            $('.nav-container').addClass('fixed');
-            $('#header').css('paddingTop', navHeight); //добавляем паддинг у хедера, чтобы блок под меню не прыгал
-        } else {
-            $('.nav-container').removeClass('fixed');
-            $('#header').removeAttr('style');
-        }
+        $('.nav__item').removeClass('nav__item--active');
+        $(this).addClass('nav__item--active');
 
     });
+
 
     //скролл меню
     $('.nav a').on("click", function (e) {
@@ -120,5 +114,75 @@ $(document).ready(function() {
         }, 1000);
     });
 
+    //фиксация меню плавность!!!!!!!!!!!!!!!!!!!!!!!
+    $(document).on("scroll", function () {
+
+        var documentScroll = $(this).scrollTop(), //сколько проскроллили в пикселях
+               headerHeight = $('#header').height(), //высота хедера
+               navHeight = $('.nav-container').innerHeight(); //высота блока меню с границей, паддингами и тд.
+
+        if (documentScroll > headerHeight) {
+            $('.nav-container').addClass('fixed');
+            $('#header').css('paddingTop', navHeight); //добавляем паддинг у хедера, чтобы блок под меню не прыгал
+        } else {
+            $('.nav-container').removeClass('fixed');
+            $('#header').removeAttr('style');
+        }
+
+    });
+    // $(document).on("scroll", onScroll);
+
+    //модальное окно Login
+    //прописать айди модального окно в href кнопки
+    $('.js-show-modal').on('click', function (e) {
+
+        e.preventDefault();
+
+        var currentModal = $(this).attr('href'); //именно нужное модальное окно через айди
+
+        $(currentModal + ', #js-overlay').fadeIn(700);
+        $('body').addClass('open-modal'); //скрываем вертикaльный скролл
+
+    });
+
+    $('.js-modal-close, #js-overlay').on('click', function (e) {
+
+        e.preventDefault();
+
+        $('.js-modal, #js-overlay').fadeOut(100);
+        $('body').removeClass('open-modal');
+
+    });
+
+    //Изменить текст в заголовке сайта с помощью jQuery
+    $('.title').text('New title');
+
+    //все четные и нечетные элементы главного меню
+    // console.log($('.nav__item:even')); //нечетные
+    // console.log($('.nav__item:odd')); //четные
+
+    //Выбрать в футере один из списков. Вернуть все родительские и дочерние элементы
+    console.log($('.footer-nav:first-child'));
+
 });
 
+//активный пункт при скролле
+// function onScroll(){
+//
+//     var scrollPos = $(document).scrollTop();
+//
+//     $('.nav a').each(function () {
+//
+//         var hash = $(this).attr("href");
+//         var target = $(hash);
+//
+//         if (target.position().top <= scrollPos && target.position().top + target.outerHeight() > scrollPos) {
+//             $('.nav__item').removeClass('nav__item--active');
+//             $(this).addClass('nav__item--active');
+//         }
+//         else{
+//             $(this).removeClass("nav__item--active");
+//         }
+//
+//     });
+// }

@@ -51,7 +51,7 @@
                 <a href="#contacts" class="nav__item">contacts</a>
             </nav>
 
-            <a href="#" class="btn btn_login pull-right" id="button1">login</a>
+            <a href="#js-login-modal" class="btn btn_login pull-right js-show-modal" id="button1">login</a>
         </div><!-- /.container -->
     </div><!-- /.nav-container -->
 
@@ -406,8 +406,17 @@
 
 </div><!-- /.container footer -->
 
-
-
+<!-- Modals -->
+<div class="overlay" id="js-overlay"></div>
+<div class="modal js-modal" id="js-login-modal">
+    <h2>Login form</h2>
+    <form action="#" method="post" class="login-form">
+        <label>Name<input type="text"></label>
+        <label>Password<input type="password"></label>
+        <button type="submit" class="btn btn-form">Login</button>
+    </form>
+    <a href="#" class="btn btn_red js-modal-close">Close</a>
+</div>
 
 
 <!-- Javascript section -->
