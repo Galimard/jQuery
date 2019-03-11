@@ -63,7 +63,7 @@ $(document).ready(function() {
         prompt('Как ваши дела?');
     });
 
-    $('#button8, #button9, #button10, #button11').on('click', function (e) {
+    $('#button8, #button9, #button10').on('click', function (e) {
         e.preventDefault();
         confirm('Соглашайтесь!');
     });
@@ -79,18 +79,18 @@ $(document).ready(function() {
 
     //-------------------------------------------Часть 2-----------------------------------------------
 
-    //Сформировать любую выборку из всех картинок на макете. Выбрать:
+    //-----------------------------------------Сформировать любую выборку из всех картинок на макете. Выбрать:---------------------------------------------------
     // - первый элемент в выборке
     // - последний элемент в выборке
-    var images = $('img.post-photo:first-child');
-    var images = $('img.post-photo:last-child');
+    var images = $('img.post-photo:first');
+    var images = $('img.post-photo:last');
     // console.log(images);
 
-    //Выбрать все элементы с классом .container. Исключить блоки, не имеющие поля ввода
-    var container = $('.container:has(input)');
-    // console.log(container);
+    //---------------------------Выбрать все элементы с классом .container. Исключить блоки, не имеющие поля ввода--------------------------------
+    var container = $('.container:not(:has(input))');
+    console.log(container);
 
-    //активный пункт меню
+    //----------------------------------------------активный пункт меню-----------------------------------------
     $('.nav__item').on('click', function(e) {
 
         e.preventDefault();
@@ -101,7 +101,7 @@ $(document).ready(function() {
     });
 
 
-    //скролл меню
+    //-------------------------------------------------------скролл меню------------------------------------------------
     $('.nav a').on("click", function (e) {
 
         e.preventDefault();
@@ -114,7 +114,7 @@ $(document).ready(function() {
         }, 1000);
     });
 
-    //фиксация меню плавность!!!!!!!!!!!!!!!!!!!!!!!
+    //-----------------------------------фиксация меню-------------------------------------- плавность!!!!!!!!!!!!!!!!!!!!!!!
     $(document).on("scroll", function () {
 
         var documentScroll = $(this).scrollTop(), //сколько проскроллили в пикселях
@@ -132,7 +132,18 @@ $(document).ready(function() {
     });
     // $(document).on("scroll", onScroll);
 
-    //модальное окно Login
+    //-------------------------------------модальное окно Login------------------------------------
+    //рассчитываем центральное положение окна margin-left
+    $(".js-modal").each(function () { //для всех можальных окон
+
+        var modalWidth = $(this).innerWidth() / 2;
+
+        $(this).css({
+            "marginLeft": "-" + modalWidth + "px"
+        });
+
+    });
+
     //прописать айди модального окно в href кнопки
     $('.js-show-modal').on('click', function (e) {
 
@@ -140,29 +151,88 @@ $(document).ready(function() {
 
         var currentModal = $(this).attr('href'); //именно нужное модальное окно через айди
 
-        $(currentModal + ', #js-overlay').fadeIn(700);
-        $('body').addClass('open-modal'); //скрываем вертикaльный скролл
+        // $(currentModal + ', #js-overlay').fadeIn(700);//1 вариант
+        $(currentModal).fadeIn(700);
+        // $('body').addClass('open-modal'); //скрываем вертикaльный скролл/ 1 вариант
+        $('body').append("<div class='overlay' id='js-overlay'></div>").addClass('open-modal'); //добавляем разметку подложки модального окна, скрываем вертикaльный скролл
 
     });
 
-    $('.js-modal-close, #js-overlay').on('click', function (e) {
+    // $('.js-modal-close, #js-overlay').on('click', function (e) { //1 var
+    $('.js-modal-close').on('click', function (e) {
 
         e.preventDefault();
 
-        $('.js-modal, #js-overlay').fadeOut(100);
+        // $('.js-modal, #js-overlay').fadeOut(100); //1 вариант
+        $('.js-modal').fadeOut(100);
         $('body').removeClass('open-modal');
+        $("#js-overlay").remove(); //удаляем подложку во 2 варианте
 
     });
 
-    //Изменить текст в заголовке сайта с помощью jQuery
-    $('.title').text('New title');
+    //2 variant
+    $("body").on("click", "#js-overlay", function() {
 
-    //все четные и нечетные элементы главного меню
+        $('.js-modal').fadeOut(100);
+        $('body').removeClass('open-modal');
+        $("#js-overlay").remove();
+
+    });
+
+    //-------------Изменить текст в заголовке сайта с помощью jQuery-------------------------
+    $('.main-title').text('New title');
+
+    //-----------------все четные и нечетные элементы главного меню------------------------------
     // console.log($('.nav__item:even')); //нечетные
     // console.log($('.nav__item:odd')); //четные
 
-    //Выбрать в футере один из списков. Вернуть все родительские и дочерние элементы
-    console.log($('.footer-nav:first-child'));
+    //-----------------Выбрать в футере один из списков. Вернуть все родительские и дочерние элементы--------------------------
+    // console.log($('.footer-nav:first'));
+    var parent = $('.footer-nav:first').parent();
+    var children = $('.footer-nav:first').children();
+    // console.log(parent);
+    // console.log(children);
+
+    //------------------------------------------------accordion----------------------------------------------------
+    $('.js-faq-title').on('click', function (e) {
+
+        e.preventDefault();
+
+        var $this = $(this);
+        // var answerId = $this.attr("href"); //2 вариант
+
+        if(!$this.hasClass("title--active")) { //есть ли у ссылки класс актив
+            $(".faq-content").slideUp(); //скрывам у всех контент
+            $(".js-faq-title").removeClass("title--active"); //у всех удалем класс актив
+        }
+
+        $this.toggleClass("title--active");
+        $this.siblings().slideToggle();
+        // answerId.siblings().slideToggle(); //2 вариант
+        // $(this).next().slideDown(); //вариант вместо siblings
+
+    });
+
+    //-----------------------------------всплывающая подсказка------------------------------------------
+    $(".js-popup-hover").hover(function(){
+
+        var $this = $(this),
+               titleId = $this.attr("href");
+
+        $(titleId).fadeIn();
+
+    }, function () { //функция после запятой выполняется после основной функции
+
+        $(".js-popup").fadeOut();
+
+    });
+
+    //--------------вырезать блок с картой, перетащить перед блоком testimonials----------------
+    $(".map").insertBefore($("#testimonials"));
+
+    //------------------Удалить в футере блок с телефоном и копирайтом------------------------------
+    $(".footer-contacts-block").remove();
+
 
 });
 

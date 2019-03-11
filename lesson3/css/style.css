@@ -36,7 +36,7 @@
     left: 0;
     z-index: 999;
 
-    display: none;
+    /*display: none;*/ /*js*/
 }
 
 .modal {
@@ -50,7 +50,7 @@
     top: 100px;
     left: 50%;
     z-index: 1000;
-    margin-left: -150px;
+    /*margin-left: -150px;*/ /*js*/
 
     display: none;
 }
@@ -71,3 +71,18 @@
     border: 1px solid #e84c3d;
     margin-bottom: 20px;
 }
+
+.btn-form:hover {
+    background-color: #e84c3d;
+    color: #ffffff;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.faq{width:600px;margin:30px auto}.faq-title{-webkit-transition:background-color .2s;-moz-transition:background-color .2s;transition:background-color .2s;display:block;padding:5px 10px;color:#000;text-decoration:none;background-color:#eaeaea;border-bottom:1px solid #d1d1d1}.faq-title:hover{background-color:#ddd}.faq-content{padding:5px 10px;font-size:12px;                                          display: none;}
+                                                                                                                                                                                                                                                                                                                         .popup {                                                                                                                                               width: 150px;                                                                                                                                       padding: 5px;                                                                                                                                     background-color: #000;                                                                                                                 border-radius: 3px;                                                                                                                     color: #fff;                                                                                                                                                      position: absolute;                                                                                                                               top: 120%;                                                                                                                                           z-index: 1;                                                                                                                                          margin-left: -75px;                                                                                                                               display: none;}
+                                                                                                                                                                                                                                                                                                                         #button11 {
+                                                                                                                                                                                                                                                                                                                             position: relative;
+                                                                                                                                                                                                                                                                                                                         }
