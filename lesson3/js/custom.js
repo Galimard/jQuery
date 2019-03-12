@@ -77,7 +77,7 @@ $(document).ready(function() {
         }, 1000);
     });
 
-    //-------------------------------------------Часть 2-----------------------------------------------
+    //-------------------------------------------Часть 2 ------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------
 
     //-----------------------------------------Сформировать любую выборку из всех картинок на макете. Выбрать:---------------------------------------------------
     // - первый элемент в выборке
@@ -88,7 +88,7 @@ $(document).ready(function() {
 
     //---------------------------Выбрать все элементы с классом .container. Исключить блоки, не имеющие поля ввода--------------------------------
     var container = $('.container:not(:has(input))');
-    console.log(container);
+    // console.log(container);
 
     //----------------------------------------------активный пункт меню-----------------------------------------
     $('.nav__item').on('click', function(e) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
         }, 1000);
     });
 
-    //-----------------------------------фиксация меню-------------------------------------- плавность!!!!!!!!!!!!!!!!!!!!!!!
+    //-----------------------------------фиксация меню--------------------------------------
     $(document).on("scroll", function () {
 
         var documentScroll = $(this).scrollTop(), //сколько проскроллили в пикселях
@@ -132,7 +132,8 @@ $(document).ready(function() {
     });
     // $(document).on("scroll", onScroll);
 
-    //-------------------------------------модальное окно Login------------------------------------
+    //---------------------------------------------------модальное окно Login------------------------------------------------------
+
     //рассчитываем центральное положение окна margin-left
     $(".js-modal").each(function () { //для всех можальных окон
 
@@ -179,6 +180,36 @@ $(document).ready(function() {
 
     });
 
+    //----------------------------валидация формы поиска search-form------------------------------------
+
+    $('.js-search-form').submit(function(e) {
+        e.preventDefault();
+        var email = $('.js-search-input').val();
+
+        $(".error").remove();
+
+         if (email.length< 1) {
+            $('.js-search-form').after('<span class="error">This field is required</span>');
+        } else {
+            var regEx = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+                   validEmail = regEx.test(email);
+
+            if (!validEmail) {
+                $('.js-search-form').after('<span class="error">Enter a valid email</span>');
+            } else {
+                $('.js-search-form').after('<span class="valid">Email is OK</span>');
+            }
+        }
+    });
+
+    //убираем сообщение валидации
+    $('.js-search-form').focusout( function () {
+        if($(".error").length > 0 || $(".valid").length > 0) {
+            $(".error").remove();
+            $(".valid").remove();
+        }
+    });
+
     //-------------Изменить текст в заголовке сайта с помощью jQuery-------------------------
     $('.main-title').text('New title');
 
@@ -193,46 +224,47 @@ $(document).ready(function() {
     // console.log(parent);
     // console.log(children);
 
-    //------------------------------------------------accordion----------------------------------------------------
-    $('.js-faq-title').on('click', function (e) {
-
-        e.preventDefault();
-
-        var $this = $(this);
-        // var answerId = $this.attr("href"); //2 вариант
-
-        if(!$this.hasClass("title--active")) { //есть ли у ссылки класс актив
-            $(".faq-content").slideUp(); //скрывам у всех контент
-            $(".js-faq-title").removeClass("title--active"); //у всех удалем класс актив
-        }
-
-        $this.toggleClass("title--active");
-        $this.siblings().slideToggle();
-        // answerId.siblings().slideToggle(); //2 вариант
-        // $(this).next().slideDown(); //вариант вместо siblings
-
-    });
-
-    //-----------------------------------всплывающая подсказка------------------------------------------
-    $(".js-popup-hover").hover(function(){
-
-        var $this = $(this),
-               titleId = $this.attr("href");
-
-        $(titleId).fadeIn();
-
-    }, function () { //функция после запятой выполняется после основной функции
-
-        $(".js-popup").fadeOut();
-
-    });
-
     //--------------вырезать блок с картой, перетащить перед блоком testimonials----------------
     $(".map").insertBefore($("#testimonials"));
 
     //------------------Удалить в футере блок с телефоном и копирайтом------------------------------
     $(".footer-contacts-block").remove();
 
+});
+
+//-------------------------------------------Часть 3------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------accordion----------------------------------------------------
+$('.js-faq-title').on('click', function (e) {
+
+    e.preventDefault();
+
+    var $this = $(this);
+    // var answerId = $this.attr("href"); //2 вариант
+
+    if(!$this.hasClass("title--active")) { //есть ли у ссылки класс актив
+        $(".faq-content").slideUp(); //скрывам у всех контент
+        $(".js-faq-title").removeClass("title--active"); //у всех удалем класс актив
+    }
+
+    $this.toggleClass("title--active");
+    $this.siblings().slideToggle();
+    // answerId.siblings().slideToggle(); //2 вариант
+    // $(this).next().slideDown(); //вариант вместо siblings
+
+});
+
+//-----------------------------------всплывающая подсказка------------------------------------------
+$(".js-popup-hover").hover(function(){
+
+    var $this = $(this),
+        titleId = $this.attr("href");
+
+    $(titleId).fadeIn();
+
+}, function () { //функция после запятой выполняется после основной функции
+
+    $(".js-popup").fadeOut();
 
 });
 

@@ -86,3 +86,11 @@
                                                                                                                                                                                                                                                                                                                          #button11 {
                                                                                                                                                                                                                                                                                                                              position: relative;
                                                                                                                                                                                                                                                                                                                          }
+.error {
+    color: red;
+    margin-left: 5px;
+}
+.valid {
+    color: lightgreen;
+    margin-left: 5px;
+}
