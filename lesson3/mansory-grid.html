@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Masonry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .news {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+        .news:before,
+        .news:after {
+            content: "";
+            display: table;
+            width: 100%;
+        }
+        .news:after {
+            clear: both;
+        }
+        .news__item {
+            float: left;
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .news__item img {
+            max-width: 100%;
+        }
+        .news__item_md {
+            max-width: 420px;
+        }
+        .news__item_lg {
+            max-width: 640px;
+        }
+        .news-title {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="news">
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus, dignissimos tempore, rerum sunt laudantium quo illo fugiat deleniti architecto beatae soluta facere earum, porro?</p></div>
+        </div>
+    </div>
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+    </div>
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item news__item_md">
+        <div><img src="http://placehold.it/420x100" width="420" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item news__item_md">
+        <div><img src="http://placehold.it/420x100" width="420" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item news__item_lg">
+        <div><img src="http://placehold.it/640x150" width="640" height="150" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item news__item_md">
+        <div><img src="http://placehold.it/420x100" width="420" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+    <div class="news__item">
+        <div><img src="http://placehold.it/200x100" width="200" height="100" alt=""></div>
+        <div>
+            <h3 class="news-title">Title</h3>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio velit maiores molestias repudiandae placeat natus.</p></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- JS section -->
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="bower_components/masonry-layout/dist/masonry.pkgd.min.js"></script>
+<script src="custom (1).js"></script>
+
+</body>
+</html>
